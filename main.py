@@ -11,12 +11,28 @@ class Customer():
         else :
             raise TypeError("Must be a string betwen 1 to 15 characters")
         
+    
     def __repr__(self):
         return f"<Customer :{self.name}>"
     
 class Coffee():
     def __init__(self, name):
         self.name = name
+
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self, value):
+        if hasattr(self, '_name'):
+            raise AttributeError("Coffee name cannot be changed after it is set")
+        
+      
+        if isinstance(value,str) and  len(value) >= 3:
+            self._name = value
+        else :
+            raise TypeError("Must be a string  of characters 3 or more")
+        
     def __repr__(self):
         return f"<Coffee: {self.name}>"
     
